@@ -1,3 +1,4 @@
+<h1 style="font-size: 40px;">Greetings</h1>
 {% if greeting_list %}
     <ul>
     {% for greeting in greeting_list %}
@@ -14,3 +15,5 @@
 
 <br>
 <a href="{% url 'greetings:zoom' %}">Zoom greetings</a>
+<br>
+<a href="{% url 'blog:index' %}">Go to blogs</a>
