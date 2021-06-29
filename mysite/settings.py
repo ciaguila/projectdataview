@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'greetings.apps.GreetingsConfig',
     'blog.apps.BlogConfig',
+    'dataview.apps.DataviewConfig',
 ]
 
 MIDDLEWARE = [
