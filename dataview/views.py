@@ -1,3 +1,4 @@
+import csv, io
 from django.shortcuts import render
 
 # Create your views here.
@@ -31,3 +32,25 @@ class DeleteView(generic.edit.DeleteView):
     model = Data
     success_url = reverse_lazy('dataview:index')
 
+
+def data_upload(request):
+    template_name = "dataview/data_upload.html"
+
+    if request.method == "GET":
+        return render(request, template_name)
+
+    csv_file = request.FILES['file']
+
+    if not csv_file.name.endswith('.csv'):
+        message.error(request, 'This is not a csv file')
+
+    data_set = csv_file.read().decode('UTF-8')
+    io_string = io.StringIO(data_set)
+    next(io_string)
+    for column in csv.reader(io_string, delimiter = ',', quotechar="|"):
+        _, created = Data.objects.update_or_create(
+            ndata = column[0]
+        )
+    context = {}
+
+    return render(request, template_name, context)

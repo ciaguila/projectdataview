@@ -1,5 +1,5 @@
 <form method="post">{% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Update">
-    <a href="{% url 'dataview:delete' dataview.id %}">delete</a>
+    <a href="{% url 'dataview:delete' data.id %}">delete</a>
 </form>

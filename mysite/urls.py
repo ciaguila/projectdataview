@@ -18,7 +18,5 @@ from django.urls import include, path
 
 urlpatterns = [
     path('dataview/', include('dataview.urls')),
-    path('greetings/', include('greetings.urls')),
-    path('blog/', include('blog.urls')),
     path('admin/', admin.site.urls),
 ]

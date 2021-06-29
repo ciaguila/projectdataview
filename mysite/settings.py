@@ -37,8 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'greetings.apps.GreetingsConfig',
-    'blog.apps.BlogConfig',
     'dataview.apps.DataviewConfig',
 ]
 

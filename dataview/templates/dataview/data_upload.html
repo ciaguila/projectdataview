@@ -1,0 +1,19 @@
+{% if dataview_list %}
+    {% for dataview in dataview_list %}
+        <div>
+            <strong>{{dataview|safe}}</strong> 
+        </div>
+    {% endfor %}
+
+{% else %}
+{{order}}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>Upload a file</label>
+    <input type="file" name="file">
+    <p>Only accepts CSV files</p>
+    <button type="submit">Upload</button>
+</form>
+{% endif %}
+
+<a href="{% url 'dataview:index' %}">Return to main page.</a>

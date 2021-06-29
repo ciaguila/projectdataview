@@ -1,7 +1,7 @@
 <h1 style="font-size: 40px;">Data</h1>
 {% if dataview_list %}
     <ul>
-    {% for greeting in dataview_list %}
+    {% for dataview in dataview_list %}
         <li>{{ dataview.ndata }}
           <span><a href="{% url 'dataview:update' dataview.id %}">edit</a></span>
           <span><a href="{% url 'dataview:delete' dataview.id %}">delete</a></span>
@@ -12,6 +12,7 @@
     <p>No data is available.</p>
 {% endif %}
 <a href="{% url 'dataview:create' %}">Create new data</a>
+<a href="{% url 'dataview:data_upload' %}">Upload new data</a>
 
 <br>
 
