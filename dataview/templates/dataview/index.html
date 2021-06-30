@@ -2,9 +2,10 @@
 {% if dataview_list %}
     <ul>
     {% for dataview in dataview_list %}
-        <li>{{ dataview.ndata }}
-          <span><a href="{% url 'dataview:update' dataview.id %}">edit</a></span>
-          <span><a href="{% url 'dataview:delete' dataview.id %}">delete</a></span>
+        <li style="font-size: 20px;">{{ dataview.xdata }}, {{ dataview.ydata }}
+            
+          <span style="font-size: 15px;"><a href="{% url 'dataview:update' dataview.id %}">+</a></span>
+          <span style="font-size: 15px;"><a href="{% url 'dataview:delete' dataview.id %}">-</a></span>
         </li>
     {% endfor %}
     </ul>
@@ -13,6 +14,20 @@
 {% endif %}
 <a href="{% url 'dataview:create' %}">Create new data</a>
 <a href="{% url 'dataview:data_upload' %}">Upload new data</a>
-
 <br>
+<a href="{% url 'accounts:signup' %}">Sign up for an Account</a>
+<br>
+<a href="{% url 'accounts:login' %}">Login to Account</a>
+<br>
+
+
+<script
+			  src="https://code.jquery.com/jquery-1.12.4.js"
+			  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+			  crossorigin="anonymous"></script>
+
+<script
+    src="https://code.highcharts.com/highcharts.src.js"></script>
+
+
 

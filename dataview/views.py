@@ -17,14 +17,14 @@ class IndexView(generic.ListView):
 class CreateView(generic.edit.CreateView):
     template_name = 'dataview/create.html'
     model = Data
-    fields = ['ndata']
+    fields = ['xdata','ydata']
     success_url = reverse_lazy('dataview:index') 
     
 
 class UpdateView(generic.edit.UpdateView):
     template_name = 'dataview/update.html'
     model = Data
-    fields = ['ndata']
+    fields = ['xdata','ydata']
     success_url = reverse_lazy('dataview:index')
     
 class DeleteView(generic.edit.DeleteView):
@@ -49,7 +49,8 @@ def data_upload(request):
     next(io_string)
     for column in csv.reader(io_string, delimiter = ',', quotechar="|"):
         _, created = Data.objects.update_or_create(
-            ndata = column[0]
+            xdata = column[0],
+            ydata = column[1],
         )
     context = {}
 
