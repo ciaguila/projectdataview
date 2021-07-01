@@ -58,6 +58,8 @@ def data_upload(request):
 
     return render(request, template_name, context)
 
+    
+
 # def graph_data(request):
 #     grdata =  DataPool(
 #            series=

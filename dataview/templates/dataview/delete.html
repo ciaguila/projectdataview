@@ -1,13 +1,23 @@
-{% extends 'landing/base.html' %}
+{% extends 'dataview/logincheck.html' %}
 
 {% block content %}
-
+<div class ="container">
+    <div class = "row justify-content-center mt-5">
+        <div class="col-md-10 col-sm-12 text-center">
+            <h1 class="display-2"> Delete</h1>
+            <div class="d-flex justify-content-center mt-5">
+                
 <form method="post">{% csrf_token %}
     <p>Are you sure you want to delete "{{ object.xdata }}, {{ object.ydata }}"?</p>
     <input type="submit" value="Confirm">
 </form>
 
-<br>
-    <a href="{% url 'dataview:index' %}">Return to main page.</a>
+    
+<a href="{% url 'dataview:index' %}">Return to main page.</a>
 
+    
+</div>
+</div>
+</div>
+</div>
 {% endblock content %}

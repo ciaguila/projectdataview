@@ -1,0 +1,17 @@
+{% include 'landing/base.html' %}
+
+{% if user.is_authenticated %}
+<div class="d-flex justify-content-center mt-5">
+{% block content %}
+
+{% endblock content %}
+</div>
+{% else %}
+
+ <p> Please Login to Access App </p>
+</div>
+<br>
+<div class="d-flex justify-content-center mt-5"></div>
+ <a href="{% url 'landing:home' %}" class="btn btn-light mr-2">Return Home</a>
+</div>
+{% endif %}
