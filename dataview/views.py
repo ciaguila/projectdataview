@@ -1,10 +1,12 @@
 import csv, io
 from django.shortcuts import render
+# , render_to_response
 
 # Create your views here.
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import Data
+# from chartit import DataPool, Chart
 
 class IndexView(generic.ListView):
     template_name = 'dataview/index.html'
@@ -55,3 +57,33 @@ def data_upload(request):
     context = {}
 
     return render(request, template_name, context)
+
+# def graph_data(request):
+#     grdata =  DataPool(
+#            series=
+#             [{'options': {
+#                 'source': Data.objects.all()},
+#                 'terms': [{'xdata', 'ydata'}]
+#                 },
+#              ])   
+#     cht = Chart(
+#             datasource = grdata,
+#             series_options =
+#               [{'options':{
+#                   'type': 'line',
+#                   'stacking': False},
+#                 'terms':{
+#                     'xdata': [
+#                     'ydata']
+#                   }}],
+#             chart_options =
+#               {'title': {
+#                    'text': 'Line Graph'},
+#                'xAxis': {
+#                    'title':{'text': 'X Data'}},
+#                'yAxis': {
+#                    'title': {'text': 'Y Data'}},
+#                 })                     
+#     return render_to_response({'graphdata': cht})
+                   
+  

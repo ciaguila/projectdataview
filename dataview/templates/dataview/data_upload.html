@@ -20,17 +20,21 @@
     {% endfor %}
 
 {% else %}
+<div class="d-flex justify-content-center mt-5">
 {{order}}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <label>Upload a file</label>
     <input type="file" name="file">
-    <p>Only accepts CSV files</p>
     <button type="submit">Upload</button>
 </form>
+
 {% endif %}
+</div>
+<p>Only accepts CSV files</p>
 <br>
 <p> Example of Data to be uploaded</p>
+<div class="d-flex justify-content-center mt-5">
 <table>
     <tr>
         <th>Data Name 1</th>
@@ -57,7 +61,8 @@
         <td>Data y...</td>
       </tr>
   </table> 
-
+</div>
+<br>
 <a href="{% url 'dataview:index' %}">Return to main page.</a>
 
 {% endblock content %}

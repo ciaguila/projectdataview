@@ -1,0 +1,23 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
+
+
+<script
+src="https://code.jquery.com/jquery-1.12.4.js"
+integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+crossorigin="anonymous"></script>
+     <!-- highcharts CDN -->
+    <script src="https://code.highcharts.com/highcharts.src.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+   
+
+    {% load chartit %}
+    {{ graphdata|load_charts:"cht" }}
+
+
+<body>
+<div id='cht' style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto">  </div>
+</body>
+
+{% endblock content %}
