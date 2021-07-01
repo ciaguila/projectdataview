@@ -1,5 +1,12 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
 <form method="post">{% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Update">
     <a href="{% url 'dataview:delete' data.id %}">delete</a>
+    <br>
+    <a href="{% url 'dataview:index' %}">Return to main page.</a>
 </form>
+
+{% endblock content %}

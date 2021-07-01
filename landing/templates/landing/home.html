@@ -1,0 +1,21 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
+
+    <div class ="container">
+        <div class = "row justify-content-center mt-5">
+            <div class="col-md-10 col-sm-12 text-center">
+                <h1 class="display-2"> Welcome to the DataView App</h1>
+                <p class="mt-3 lead"> Please Log-In or Register to Access.</p>
+                <div class="d-flex justify-content-center mt-5">
+                    <a href="{% url 'accounts:login' %}" class="btn btn-light mr-2">Login</a>
+                    <a href="{% url 'accounts:signup' %}" class="btn btn-dark">Register</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        
+
+  
+{% endblock content %}

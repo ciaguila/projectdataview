@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dataview.apps.DataviewConfig',
-    'accounts'
+    'accounts',
+    'landing',
 ]
 
 MIDDLEWARE = [
