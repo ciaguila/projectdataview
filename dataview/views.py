@@ -1,4 +1,5 @@
-import csv, io
+import csv
+import io
 from django.shortcuts import render
 # , render_to_response
 
@@ -8,29 +9,32 @@ from django.urls import reverse_lazy
 from .models import Data
 # from chartit import DataPool, Chart
 
+
 class IndexView(generic.ListView):
     template_name = 'dataview/index.html'
-    context_object_name = 'dataview_list'    
-    
+    context_object_name = 'dataview_list'
+
     def get_queryset(self):
         """Return the all data."""
         return Data.objects.all()
 
+
 class CreateView(generic.edit.CreateView):
     template_name = 'dataview/create.html'
     model = Data
-    fields = ['xdata','ydata']
-    success_url = reverse_lazy('dataview:index') 
-    
+    fields = ['xdata', 'ydata']
+    success_url = reverse_lazy('dataview:index')
+
 
 class UpdateView(generic.edit.UpdateView):
     template_name = 'dataview/update.html'
     model = Data
-    fields = ['xdata','ydata']
+    fields = ['xdata', 'ydata']
     success_url = reverse_lazy('dataview:index')
-    
+
+
 class DeleteView(generic.edit.DeleteView):
-    template_name = 'dataview/delete.html' 
+    template_name = 'dataview/delete.html'
     model = Data
     success_url = reverse_lazy('dataview:index')
 
@@ -49,16 +53,15 @@ def data_upload(request):
     data_set = csv_file.read().decode('UTF-8')
     io_string = io.StringIO(data_set)
     next(io_string)
-    for column in csv.reader(io_string, delimiter = ',', quotechar="|"):
+    for column in csv.reader(io_string, delimiter=',', quotechar="|"):
         _, created = Data.objects.update_or_create(
-            xdata = column[0],
-            ydata = column[1],
+            xdata=column[0],
+            ydata=column[1],
         )
     context = {}
 
     return render(request, template_name, context)
 
-    
 
 # def graph_data(request):
 #     grdata =  DataPool(
@@ -67,7 +70,7 @@ def data_upload(request):
 #                 'source': Data.objects.all()},
 #                 'terms': [{'xdata', 'ydata'}]
 #                 },
-#              ])   
+#              ])
 #     cht = Chart(
 #             datasource = grdata,
 #             series_options =
@@ -85,7 +88,5 @@ def data_upload(request):
 #                    'title':{'text': 'X Data'}},
 #                'yAxis': {
 #                    'title': {'text': 'Y Data'}},
-#                 })                     
+#                 })
 #     return render_to_response({'graphdata': cht})
-                   
-  

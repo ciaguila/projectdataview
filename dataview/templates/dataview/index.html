@@ -1,43 +1,43 @@
-
 {% extends 'dataview/logincheck.html' %}
 
 {% block content %}
 
-<div class ="container">
-    <div class = "row justify-content-center mt-5">
+<div class="container">
+    <div class="row justify-content-center mt-5">
         <div class="col-md-10 col-sm-12 text-center">
             <h1 class="display-2"> Data</h1>
             <div class="d-flex justify-content-center mt-5">
-                
-            
 
-{% if dataview_list %}
-    <ul>
-    {% for dataview in dataview_list %}
-        <li style="font-size: 20px;">{{ dataview.xdata }}, {{ dataview.ydata }}
-            
-          <span style="font-size: 15px;"><a href="{% url 'dataview:update' dataview.id %}">+</a></span>
-          <span style="font-size: 15px;"><a href="{% url 'dataview:delete' dataview.id %}">-</a></span>
-        </li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No data is available.</p>
-{% endif %}
-<div class="d-flex justify-content-center mt-5">
-    <p class="mt-3 lead">
-<br>
-<a href="{% url 'dataview:create' %}">Create new data</a>
-<br>
-<a href="{% url 'dataview:data_upload' %}">Upload new data</a>
-<br>
-<a href="{% url 'landing:home' %}">Back to Home</a>
-<br>
-    </p></div>
+
+
+                {% if dataview_list %}
+                <ul>
+                    {% for dataview in dataview_list %}
+                    <li style="font-size: 20px;">{{ dataview.xdata }}, {{ dataview.ydata }}
+
+                        <span style="font-size: 15px;"><a href="{% url 'dataview:update' dataview.id %}">+</a></span>
+                        <span style="font-size: 15px;"><a href="{% url 'dataview:delete' dataview.id %}">-</a></span>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>No data is available.</p>
+                {% endif %}
+                <div class="d-flex justify-content-center mt-5">
+                    <p class="mt-3 lead">
+                        <br>
+                        <a href="{% url 'dataview:create' %}">Create new data</a>
+                        <br>
+                        <a href="{% url 'dataview:data_upload' %}">Upload new data</a>
+                        <br>
+                        <a href="{% url 'landing:home' %}">Back to Home</a>
+                        <br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-</div>
-    
+
 
 {% endblock content %}
