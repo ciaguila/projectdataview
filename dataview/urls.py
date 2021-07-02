@@ -8,5 +8,5 @@ urlpatterns = [
     path('update/<int:pk>', views.UpdateView.as_view(), name='update'),
     path('delete/<int:pk>', views.DeleteView.as_view(), name='delete'), 
     path('upload-csv/', views.data_upload, name="data_upload"), 
-    # path('graph/', views.graph_data, name="graphdata"),
+    path('graphdata/', views.graph_data, name="graphdata"),
 ]

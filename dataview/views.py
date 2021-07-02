@@ -1,13 +1,12 @@
 import csv
 import io
-from django.shortcuts import render
-# , render_to_response
+from django.shortcuts import render, render_to_response, redirect
 
 # Create your views here.
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import Data
-# from chartit import DataPool, Chart
+from chartit import DataPool, Chart
 
 
 class IndexView(generic.ListView):
@@ -55,38 +54,44 @@ def data_upload(request):
     next(io_string)
     for column in csv.reader(io_string, delimiter=',', quotechar="|"):
         _, created = Data.objects.update_or_create(
-            xdata=column[0],
-            ydata=column[1],
+            xdata= int(column[0]),
+            ydata= int(column[1]),
         )
     context = {}
+
+    if request.method == "POST":
+        return redirect('dataview:index')
+    
 
     return render(request, template_name, context)
 
 
-# def graph_data(request):
-#     grdata =  DataPool(
-#            series=
-#             [{'options': {
-#                 'source': Data.objects.all()},
-#                 'terms': [{'xdata', 'ydata'}]
-#                 },
-#              ])
-#     cht = Chart(
-#             datasource = grdata,
-#             series_options =
-#               [{'options':{
-#                   'type': 'line',
-#                   'stacking': False},
-#                 'terms':{
-#                     'xdata': [
-#                     'ydata']
-#                   }}],
-#             chart_options =
-#               {'title': {
-#                    'text': 'Line Graph'},
-#                'xAxis': {
-#                    'title':{'text': 'X Data'}},
-#                'yAxis': {
-#                    'title': {'text': 'Y Data'}},
-#                 })
-#     return render_to_response({'graphdata': cht})
+def graph_data(request):
+    # Step 1: Create a DataPool with the data we want to retrieve.
+    gdata = \
+        DataPool(
+            series=[{'options': {
+                'source': Data.objects.all()},
+                'terms': [
+                'xdata',
+                'ydata']}
+            ])
+
+    # Step 2: Create the Chart object
+    cht = Chart(
+        datasource=gdata,
+        series_options=[{'options': {
+            'type': 'line',
+            'stacking': False},
+            'terms': {
+            'xdata': [
+                'ydata']
+        }}],
+        chart_options={'title': {
+            'text': 'Graph'},
+            'xAxis': {
+            'title': {
+                'text': 'X data'}}})
+
+    # Step 3: Send the chart object to the template.
+    return render_to_response( {'graph-data', cht})
