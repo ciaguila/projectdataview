@@ -1,12 +1,12 @@
 import csv
 import io
-from django.shortcuts import render, render_to_response, redirect
+from django.shortcuts import render, redirect
+from django.views.generic import TemplateView
 
 # Create your views here.
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import Data
-from chartit import DataPool, Chart
 
 
 class IndexView(generic.ListView):
@@ -36,6 +36,14 @@ class DeleteView(generic.edit.DeleteView):
     template_name = 'dataview/delete.html'
     model = Data
     success_url = reverse_lazy('dataview:index')
+
+class GraphView(TemplateView):
+    template_name = 'dataview/graphdata.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["qs"] = Data.objects.all()
+        return context
 
 
 def data_upload(request):
