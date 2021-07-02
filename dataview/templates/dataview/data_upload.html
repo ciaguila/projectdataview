@@ -19,7 +19,8 @@
   <div class="row justify-content-center mt-5">
     <div class="col-md-10 col-sm-12 text-center">
       <h1 class="display-2">Upload Data</h1>
-      <div class="d-flex justify-content-center mt-5">
+      <p>Only accepts CSV files</p>
+        <br>
 
         {% if dataview_list %}
         {% for dataview in dataview_list %}
@@ -39,13 +40,11 @@
         </form>
 
         {% endif %}
-
-        <p>Only accepts CSV files</p>
         <br>
-        <p> Example of Data to be uploaded</p>
-
-        <p class="mt-3 lead">
-        <table>
+        Example of Data to be uploaded
+        <br>
+        
+        <table class = "col-md-10 col-sm-12 text-center">
           <tr>
             <th>Data Name 1</th>
             <th>Data Name 2</th>
@@ -71,11 +70,11 @@
             <td>Data y...</td>
           </tr>
         </table>
-        </p>
+        
 
         <br>
         <a href="{% url 'dataview:index' %}">Return to main page.</a>
-      </div>
+      
     </div>
   </div>
 </div>

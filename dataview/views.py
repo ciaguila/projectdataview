@@ -74,3 +74,7 @@ def data_upload(request):
     return render(request, template_name, context)
 
 
+def delete_data(request):
+    if request.method == 'GET':
+        Data.objects.all().delete()
+    return redirect('dataview:index')

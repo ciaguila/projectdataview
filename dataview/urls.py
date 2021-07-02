@@ -9,4 +9,5 @@ urlpatterns = [
     path('delete/<int:pk>', views.DeleteView.as_view(), name='delete'), 
     path('upload-csv/', views.data_upload, name="data_upload"),
     path('graphdata', views.GraphView.as_view(), name="graphdata"), 
+    path('deletedata', views.delete_data, name="deletedata"),
 ]
