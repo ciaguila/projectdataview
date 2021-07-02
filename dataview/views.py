@@ -66,32 +66,3 @@ def data_upload(request):
     return render(request, template_name, context)
 
 
-def graph_data(request):
-    # Step 1: Create a DataPool with the data we want to retrieve.
-    gdata = \
-        DataPool(
-            series=[{'options': {
-                'source': Data.objects.all()},
-                'terms': [
-                'xdata',
-                'ydata']}
-            ])
-
-    # Step 2: Create the Chart object
-    cht = Chart(
-        datasource=gdata,
-        series_options=[{'options': {
-            'type': 'line',
-            'stacking': False},
-            'terms': {
-            'xdata': [
-                'ydata']
-        }}],
-        chart_options={'title': {
-            'text': 'Graph'},
-            'xAxis': {
-            'title': {
-                'text': 'X data'}}})
-
-    # Step 3: Send the chart object to the template.
-    return render_to_response( {'graph-data', cht})

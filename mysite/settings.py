@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'dataview.apps.DataviewConfig',
     'accounts',
     'landing',
-    'chartit',
 ]
 
 MIDDLEWARE = [
